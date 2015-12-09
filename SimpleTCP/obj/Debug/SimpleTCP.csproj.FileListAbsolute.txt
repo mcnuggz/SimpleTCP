@@ -1,1 +1,6 @@
 C:\Users\nanne\Documents\GitHub\SimpleTCP\SimpleTCP\bin\Debug\SimpleTCP.exe.config
+C:\Users\nanne\Documents\GitHub\SimpleTCP\SimpleTCP\obj\Debug\SimpleTCP.csprojResolveAssemblyReference.cache
+C:\Users\nanne\Documents\GitHub\SimpleTCP\SimpleTCP\bin\Debug\SimpleTCP.exe
+C:\Users\nanne\Documents\GitHub\SimpleTCP\SimpleTCP\bin\Debug\SimpleTCP.pdb
+C:\Users\nanne\Documents\GitHub\SimpleTCP\SimpleTCP\obj\Debug\SimpleTCP.exe
+C:\Users\nanne\Documents\GitHub\SimpleTCP\SimpleTCP\obj\Debug\SimpleTCP.pdb

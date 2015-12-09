@@ -4,12 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace SimpleTCP
 {
     public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            Whatever w = new Whatever();
+            Translator<object> binTranslator = new Translator<object>(new object());
+
+            Console.WriteLine(w);
+            Console.ReadLine();
         }
     }
 }
