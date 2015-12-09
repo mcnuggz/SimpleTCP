@@ -8,9 +8,11 @@ namespace SimpleTCP
 {
     public class Array<T>
     {
+        T zergle;
         public void Translator(T userInput)
         {
-
+            //awesome variable names are awesome
+            zergle = userInput; 
         }
     }
 }
