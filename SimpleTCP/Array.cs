@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace SimpleTCP
 {
-    public class Program
+    public class Array<T>
     {
-        static void Main(string[] args)
+        public void Translator(T userInput)
         {
+
         }
     }
 }
