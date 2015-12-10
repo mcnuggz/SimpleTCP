@@ -9,44 +9,30 @@ namespace SimpleTCP
 {
     class Header
     {
-        //public class ipHeader
-        //{
-        //    Version;
-        //    IHL;
-        //    serviceType;
-        //    totalLength;
-        //    ID;
-        //    flags;
-        //    fragmentOffset;
-        //    timeToLive;
-        //    headerCheckSum;
-        //    sourceAddress;
-        //    destinationAddress;
-        //    options;
-        //    padding;
-        //}
-
         public class tcpHeader
         {
-            BitArray sourcePort = new BitArray(16);
-            BitArray destinationPort = new BitArray(16);
-            BitArray sequenceNumber = new BitArray(32);
-            BitArray acknowledgmentNumber = new BitArray(32);
-            BitArray dataOffset = new BitArray(4);
-            BitArray reserved = new BitArray(6);
-            //controlBits
+            public tcpHeader(int sourcePort, int destinationPort, int sequencePort, int ackNumb, int dataOffset, bool[] reserved, int window, int checkSum, int urgentPointer)
+            {
+                BitArray _sourcePort = new BitArray(BitConverter.GetBytes(sourcePort));
+                BitArray _destinationPort = new BitArray(BitConverter.GetBytes(destinationPort));
+                BitArray _sequencePort = new BitArray(BitConverter.GetBytes(sequencePort));
+                BitArray _ackknowledgmentNumber = new BitArray(BitConverter.GetBytes(ackNumb));
+                BitArray _dataOffset = new BitArray(BitConverter.GetBytes(dataOffset));
+                  bool[] _reserved = new bool[] { false, false, false };
+                BitArray _window = new BitArray(BitConverter.GetBytes(window));
+                BitArray _checkSum = new BitArray(BitConverter.GetBytes(checkSum));
+                BitArray _urgentPointer = new BitArray(BitConverter.GetBytes(urgentPointer));
+
             bool URG;
             bool ACK;
             bool PSH;
             bool RST;
             bool SYN;
             bool FIN;
-            ushort window;
-            int checkSum;
-            int urgentPoint;
-            tcpOptions;
-            padding;
-            tcpData;
+            
+
+            }
+
             
         }
 
