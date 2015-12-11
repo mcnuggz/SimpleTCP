@@ -11,10 +11,10 @@ namespace SimpleTCP
     {
         public static void Main(string[] args)
         {
-            Whatever w = new Whatever();
-            Translator<object> binTranslator = new Translator<object>(new object());
+            //Translator<object> binTranslator = new Translator<object>(new object());
+            TCPHeader tcp = new TCPHeader();
 
-            Console.WriteLine(w);
+            Console.WriteLine(tcp);
             Console.ReadLine();
         }
     }

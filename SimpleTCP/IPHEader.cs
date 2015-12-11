@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleTCP
 {
-    [Serializable]
-    class Whatever
+    public class IPHeader
     {
-        string jerb = "Whatup";
     }
 }
