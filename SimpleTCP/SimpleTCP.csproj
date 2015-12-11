@@ -44,10 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IPHeader.cs" />
+    <Compile Include="ProtocolHead.cs" />
+    <Compile Include="socketConverter.cs" />
     <Compile Include="TCPHeader.cs" />
     <Compile Include="Translator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Winsockloctl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
