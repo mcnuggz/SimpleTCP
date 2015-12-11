@@ -12,7 +12,15 @@ namespace SimpleTCP
         byte serviceType; // 8 bits
         ushort totalLength; //16 bits
         ushort _ID; // 16 bits
-        ushort dataOffset;
+        ushort dataOffset; // flags and dataOffset = 8 bits
+
+        // 0 = same host
+        // 1 = same subnet (LAN or Intranet)
+        // 32 = same site
+        // 64 = same region
+        // 128 = same continent
+        // 255 = unrestricted
+
         byte timeToLive; // 8 bits
         byte protocol; // 8 bits
         ushort checkSum; // 16 bits
@@ -37,28 +45,130 @@ namespace SimpleTCP
         public byte Version
         {
             get
-            { return version;
+            {
+                return version;
             }
             private set
-            { version = value;
+            {
+                version = value;
             }
         }
-        public byte Length { get { return (byte)(length * 4); } private set { length = (byte)(value / 4); } }
-        public byte ServiceType { get { return serviceType; } private set { serviceType = value; } }
-        public ushort TotalLength { get { return (ushort)IPAddress.NetworkToHostOrder((short)totalLength); } private set { totalLength = (ushort)IPAddress.HostToNetworkOrder((short)value); } }
-        public ushort ID { get { return (ushort)IPAddress.NetworkToHostOrder((short)_ID); } private set { _ID = (ushort)IPAddress.HostToNetworkOrder((short)value); } }
-        public ushort DataOffset { get { return (ushort)IPAddress.NetworkToHostOrder((short)dataOffset); } private set { dataOffset = (ushort)IPAddress.HostToNetworkOrder((short)value); } }
-        public byte TimeToLive { get { return timeToLive; } private set { timeToLive = value; } }
-        public byte Protocol { get { return protocol; } private set { protocol = value; } }
-        public ushort CheckSum { get { return (ushort)IPAddress.NetworkToHostOrder((short)checkSum); } private set { checkSum = (ushort)IPAddress.HostToNetworkOrder((short)value); } }
-        public IPAddress SourceAddress { get { return sourceAddress; } private set { sourceAddress = value; } }
-        public IPAddress DestinationAddress { get { return destinationAddress; } private set { destinationAddress = value; } }
+        public byte Length
+        {
+            get
+            {
+                return (byte)(length * 4);
+            }
+            private set
+            {
+                length = (byte)(value / 4);
+            }
+        }
+        public byte ServiceType
+        {
+            get
+            {
+                return serviceType;
+            }
+            private set
+            {
+                serviceType = value;
+            }
+        }
+        public ushort TotalLength
+        {
+            get
+            {
+                return (ushort)IPAddress.NetworkToHostOrder((short)totalLength);
+            }
+            private set
+            {
+                totalLength = (ushort)IPAddress.HostToNetworkOrder((short)value);
+            }
+        }
+        public ushort ID
+        {
+            get
+            {
+                return (ushort)IPAddress.NetworkToHostOrder((short)_ID);
+            }
+            private set
+            {
+                _ID = (ushort)IPAddress.HostToNetworkOrder((short)value);
+            }
+        }
+        public ushort DataOffset
+        {
+            get
+            {
+                return (ushort)IPAddress.NetworkToHostOrder((short)dataOffset);
+            }
+            private set
+            {
+                dataOffset = (ushort)IPAddress.HostToNetworkOrder((short)value);
+            }
+        }
+        public byte TimeToLive
+        {
+            get
+            {
+                return timeToLive;
+            }
+            private set
+            {
+                timeToLive = value;
+            }
+        }
+        public byte Protocol
+        {
+            get
+            {
+                return protocol;
+            }
+            private set
+            {
+                protocol = value;
+            }
+        }
+        public ushort CheckSum
+        {
+            get
+            {
+                return (ushort)IPAddress.NetworkToHostOrder((short)checkSum);
+            }
+            private set
+            {
+                checkSum = (ushort)IPAddress.HostToNetworkOrder((short)value);
+            }
+        }
+        public IPAddress SourceAddress
+        {
+            get
+            {
+                return sourceAddress;
+            }
+            private set
+            {
+                sourceAddress = value;
+            }
+        }
+        public IPAddress DestinationAddress
+        {
+            get
+            {
+                return destinationAddress;
+            }
+            private set
+            {
+                destinationAddress = value;
+            }
+        }
 
         public static TCPHeader CreatePacket (byte[] ipv4Packet, ref int bytesCopied)
         {
             TCPHeader pv4Head = new TCPHeader();
 
-            if (ipv4Packet.Length < TCPHeader.headerLength)
+            if (ipv4Packet.Length < headerLength)
             {
                 return null;
             }
@@ -85,13 +195,12 @@ namespace SimpleTCP
 
         public override byte[] getPacketBytes(byte[] payLoad)
         {
-            byte[] pv4Packet;
-            byte[] byteValue;
-            int index = 0;
-
             //allocates space for header and payload
-            pv4Packet = new byte[headerLength + payLoad.Length];
+            byte[] pv4Packet = new byte[headerLength + payLoad.Length];
+            byte[] byteValue;
+            int index = 0;  
 
+            // | is an OR operator
             pv4Packet[index++] = (byte)((version << 4) | length);
             pv4Packet[index++] = serviceType;
 

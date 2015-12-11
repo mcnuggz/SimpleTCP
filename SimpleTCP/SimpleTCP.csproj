@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="IPHeader.cs" />
     <Compile Include="ProtocolHead.cs" />
+    <Compile Include="Pv6Header.cs" />
     <Compile Include="socketConverter.cs" />
     <Compile Include="TCPHeader.cs" />
     <Compile Include="Translator.cs" />
